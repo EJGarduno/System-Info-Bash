@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#output_file=system-info.txt
+
+#gathering system info
+hostname=$(hostname)
+os=$(cat /etc/os-release | grep PRETTY_NAME | cut -d"" -f2)
+uptime=$(uptime -p)
+kernel=$(uname -r)
+cpu_info=$(lscpu | hend -15)
+mem_avaliable=$(free -h)
+ip_info=$(ip addr show)
+file_utili=$(df -h)
+grep -i 'error' /var/log/syslog | tail -n 5)
+
+#displaying and writing system info to output file
+echo "System Hostname: $hostname"
+echo ''
+echo "Operating Systsem: $os"
+echo ''
+echo "Uptime: $uptime"
+echo ''
+echo "Linux kernel Version: $kernel"
+echo ''
+echo "CPU Info:"
+echo ''
+echo "$cpu_info"
+echo ''
+echo "Memory Avaliable:"
+echo ''
+echo "$mem_avaliable"
+echo ''
+echo "IP Info:"
+echo ''
+echo "$ip_info"
+echo ''
+echo "File Utilization: $file_utili"
+echo ''
+echo "Error Lines: $error_lines"
+
